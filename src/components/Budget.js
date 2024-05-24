@@ -26,7 +26,7 @@ const Budget = () => {
           symbol: "₹",
           name: "₹ Rupee"
         }
-      ];
+    ];
 
     const handleBudgetChange = (event) => {
         const value = parseFloat(event.target.value);
@@ -54,20 +54,44 @@ const Budget = () => {
         <div className='alert alert-secondary'>
             <span>Budget: {newBudget} {currency}</span>
             <div>
-                <label htmlFor='currency' style={{fontSize: '18px'}}>Currency: </label>
-                <select id='currency' onChange={handleCurrencyChange} value={currency}>
+                <label htmlFor='currency' style={{ fontSize: '18px' }}>Currency: </label>
+                <select
+                    id='currency'
+                    onChange={handleCurrencyChange}
+                    value={currency}
+                    style={{
+                        fontSize: '14px',
+                        backgroundColor: '#ccffcc',  // Light green background
+                        color: 'black',  // Black text color
+                        padding: '5px',
+                        border: '1px solid #4fac5c',  // Green border
+                        borderRadius: '4px',
+                        outline: 'none',  // Remove outline on focus
+                        cursor: 'pointer',
+                    }}
+                >
                     {CURRENCY_LIST.map((curr) => (
-                        <option key={curr.symbol} value={curr.symbol}>{curr.name}</option>
+                        <option
+                            key={curr.symbol}
+                            value={curr.symbol}
+                            style={{
+                                backgroundColor: '#ccffcc',  // Light green background for option
+                                color: 'black',  // Black text color for option
+                                cursor: 'pointer',
+                            }}
+                        >
+                            {curr.name}
+                        </option>
                     ))}
                 </select>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', marginTop: '10px' }}>
                 <label style={{ fontSize: '15px', marginRight: '5px' }} htmlFor='cost'>Budget {currency}</label>
-                <input 
-                    required='required' 
-                    type="number" 
-                    step="10" 
-                    value={newBudget} 
+                <input
+                    required='required'
+                    type="number"
+                    step="10"
+                    value={newBudget}
                     onChange={handleBudgetChange}
                     style={{ width: "100px" }}
                 />
